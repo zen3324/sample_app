@@ -1,13 +1,13 @@
 <footer class="footer">
   <small>
-    <a href="http://railstutorial.jp/">Rails Tutorial</a>
+    <%= link_to t('.rails_tutorial'), 'http://railstutorial.jp/' %>
     by Michael Hartl
   </small>
   <nav>
     <ul>
-      <li><%= link_to "About",   about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-      <li><a href="http://news.railstutorial.jp/">News</a></li>
+      <li><%= link_to t('.about'),   about_path %></li>
+      <li><%= link_to t('.contact'), contact_path %></li>
+      <li><%= link_to t('.news'), 'http://news.railstutorial.jp/' %></li>
     </ul>
   </nav>
 </footer>
