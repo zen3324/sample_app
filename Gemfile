@@ -14,6 +14,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.13.1'
   gem 'test-unit'
+  gem 'guard-livereload'
 end
 
 group :test do
