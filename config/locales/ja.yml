@@ -20,8 +20,26 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
 
+  title:
+    base_title: Ruby on Railsチュートリアル サンプルアプリケーション
+    sign_up: サインアップ
+    sign_in: サインイン
+    help: ヘルプ
+    about: 私達について
+    contact: 問い合わせ
+    users: ユーザー一覧
+    edit_user: プロフィール変更
+
+  flash:
+    welcome_to_the_sample_app: サンプルアプリケーションへようこそ！
+    invalid_email_password_combination: メールアドレスとパスワードの組み合わせが正しくありません
+    micropost_created: マイクロポストを投稿しました！
+    profile_updated: プロフィールを更新しました
+    user_destroyed: ユーザを削除しました
+
   static_pages:
     home:
+      sample_app: サンプルアプリケーション
       welcome_to_the_sample_app: サンプルアプリケーションへようこそ
       sign_up_now: 今すぐ登録
       micropost_feed: マイクロポストフィード

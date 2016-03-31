@@ -6,21 +6,21 @@ describe 'Authentication' do
   describe 'signin page' do
     before { visit signin_path }
 
-    it { should have_content('Sign in') }
-    it { should have_title('Sign in') }
+    it { should have_content(t('sessions.new.sign_in')) }
+    it { should have_title(t('sessions.new.sign_in')) }
   end
 
   describe 'signin' do
     before { visit signin_path }
 
     describe 'with invalid information' do
-      before { click_button 'Sign in' }
+      before { click_button t('sessions.new.sign_in') }
 
-      it { should have_title('Sign in') }
-      it { should have_selector('div.alert.alert-error', text: 'Invalid') }
+      it { should have_title(t('sessions.new.sign_in')) }
+      it { should have_selector('div.alert.alert-error', text: t('flash.invalid_email_password_combination')) }
 
       describe 'after visiting another page' do
-        before { click_link 'Home' }
+        before { click_link t('layouts.header.home') }
         it { should_not have_selector('div.alert.alert-error') }
       end
     end
@@ -30,15 +30,15 @@ describe 'Authentication' do
       before { sign_in user }
 
       it { should have_title(user.name) }
-      it { should have_link('Users', href: users_path) }
-      it { should have_link('Profile', href: user_path(user)) }
-      it { should have_link('Settings', href: edit_user_path(user)) }
-      it { should have_link('Sign out', href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link(t('layouts.header.users'), href: users_path) }
+      it { should have_link(t('layouts.header.profile'), href: user_path(user)) }
+      it { should have_link(t('layouts.header.settings'), href: edit_user_path(user)) }
+      it { should have_link(t('layouts.header.sign_out'), href: signout_path) }
+      it { should_not have_link(t('layouts.header.sign_in'), href: signin_path) }
 
       describe 'followed by signout' do
-        before { click_link 'Sign out' }
-        it { should have_link('Sign in') }
+        before { click_link t('layouts.header.sign_out') }
+        it { should have_link(t('layouts.header.sign_in')) }
       end
     end
   end
@@ -50,14 +50,14 @@ describe 'Authentication' do
       describe 'when attempting to visit a protected page' do
         before do
           visit edit_user_path(user)
-          fill_in 'Email', with: user.email
-          fill_in 'Password', with: user.password
-          click_button 'Sign in'
+          fill_in t('activerecord.attributes.user.email'), with: user.email
+          fill_in t('activerecord.attributes.user.password'), with: user.password
+          click_button t('sessions.new.sign_in')
         end
 
         describe 'after signing in' do
           it 'should render the desired protected page' do
-            expect(page).to have_title('Edit user')
+            expect(page).to have_title(t('title.edit_user'))
           end
         end
       end
@@ -65,7 +65,7 @@ describe 'Authentication' do
       describe 'in the Users controller' do
         describe 'visiting the edit page' do
           before { visit edit_user_path(user) }
-          it { should have_title('Sign in') }
+          it { should have_title(t('layouts.header.sign_in')) }
         end
 
         describe 'submitting to the update action' do
@@ -75,17 +75,17 @@ describe 'Authentication' do
 
         describe 'visiting the user index' do
           before { visit users_path }
-          it { should have_title('Sign in') }
+          it { should have_title(t('layouts.header.sign_in')) }
         end
 
         describe "visiting the following page" do
           before { visit following_user_path(user) }
-          it { should have_title('Sign in') }
+          it { should have_title(t('layouts.header.sign_in')) }
         end
 
         describe "visiting the followers page" do
           before { visit followers_user_path(user) }
-          it { should have_title('Sign in') }
+          it { should have_title(t('layouts.header.sign_in')) }
         end
       end
 
