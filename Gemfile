@@ -15,6 +15,7 @@ group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'test-unit'
   gem 'guard-livereload'
+  gem 'pry-byebug'
 end
 
 group :test do
