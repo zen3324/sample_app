@@ -8,6 +8,7 @@ gem 'sprockets', '2.11.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'kaminari'
+gem 'exception_notification'
 
 group :development, :test do
   gem 'sqlite3'
